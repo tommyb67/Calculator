@@ -1,5 +1,31 @@
-p "Would you like to add, subtract, multiply, divide, calc area, calc volume, calc fuel costs or calc annual simple interest?"
-calc_choice = gets.chomp
+p "Would you like to \n
+add \n
+subtract \n
+multiply \n
+divide \n
+calc area \n
+calc volume \n
+calc fuel costs \n
+calc annual simple interest?"
+calc_choice = gets.chomp.downcase
+
+def two_inputs
+  puts "Enter the first number"
+  first = gets.chomp.to_f
+  puts "Enter the second number"
+  second = gets.chomp.to_f
+  return first, second
+end
+
+def three_inputs
+  puts "Enter the first number"
+  first = gets.chomp.to_f
+  puts "Enter the second number"
+  second = gets.chomp.to_f
+  puts "Enter the third number"
+  third = gets.chomp.to_f
+  return first, second, third
+end
 
 def add(x,y)
   return x+y
@@ -36,62 +62,38 @@ end
 
 case calc_choice
 when "add"
-  p "Enter 1st number"
-  first_num = gets.chomp.to_i
-  p "Enter 2nd number"
-  second_num = gets.chomp.to_i
-
-  puts add(first_num,second_num)
+  x, y = two_inputs
+  puts add(x,y)
 
 when "subtract"
-  p "Enter 1st number"
-  first_num = gets.chomp.to_i
-  p "Enter 2nd number"
-  second_num = gets.chomp.to_i
-
-  puts subtract(first_num,second_num)
+  x, y = two_inputs
+  puts add(x,y)
 
 when "multiply"
-  p "Enter 1st number"
-  first_num = gets.chomp.to_i
-  p "Enter 2nd number"
-  second_num = gets.chomp.to_i
-
-  puts multiply(first_num,second_num)
+  x, y = two_inputs
+  puts add(x,y)
 
 when "divide"
-  p "Enter 1st number"
-  first_num = gets.chomp.to_i
-  p "Enter 2nd number"
-  second_num = gets.chomp.to_i
-
-  puts divide(first_num,second_num)
+  x, y = two_inputs
+  puts divide(x,y)
 
 when "calc area"
-  p "Enter length"
-  length = gets.chomp.to_i
-  p "Enter width"
-  width = gets.chomp.to_i
-
-  puts calc_area(length,width)
+  x, y = two_inputs
+  puts add(x,y)
 
 when "calc volume"
-  p "Enter length"
-  length = gets.chomp.to_i
-  p "Enter width"
-  width = gets.chomp.to_i
-  p "Enter height"
-  height = gets.chomp.to_i
+  x, y, z = three_inputs
+  puts add(x,y,z)
 
   puts calc_volume(length,width,height)
 
 when "calc fuel cost"
   p "Enter driving distance in miles"
-  driving_distance = gets.chomp.to_i
+  driving_distance = gets.chomp.to_f
   p "Enter miles per gallon"
-  miles_gallon = gets.chomp.to_i
+  miles_gallon = gets.chomp.to_f
   p "Enter cost of a gallon of gas"
-  cost_gas = gets.chomp.to_i
+  cost_gas = gets.chomp.to_f
 
   puts "Your trip will cost: $#{calc_fuel_cost(driving_distance,miles_gallon,cost_gas)}"
 
