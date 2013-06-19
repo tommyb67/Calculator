@@ -1,13 +1,18 @@
-p "Would you like to \n
+# build a simple calculator
+# ask the end user what calculation he/she would like to perform
+
+puts "Would you like to:
 add \n
 subtract \n
 multiply \n
 divide \n
 calc area \n
 calc volume \n
-calc fuel costs \n
+calc fuel cost \n
 calc annual simple interest?"
 calc_choice = gets.chomp.downcase
+
+# Create functions for 2 or 3 input parameters, which will be supplied by the user
 
 def two_inputs
   puts "Enter the first number"
@@ -26,6 +31,19 @@ def three_inputs
   third = gets.chomp.to_f
   return first, second, third
 end
+
+def fuel_cost
+  puts "How many miles do you plan to drive?"
+  first = gets.chomp.to_f
+  puts "How many miles do you get per gallon?"
+  second = gets.chomp.to_f
+  puts = "How much does a gallon of gas cost?"
+  third = gets.chomp.to_f
+  return first, second, third
+end
+
+
+# Create functions for each type of calculation
 
 def add(x,y)
   return x+y
@@ -59,6 +77,7 @@ def calc_annual_simple_interest(x,y)
   return x*(y/100)
 end
 
+# Create the case statement, using the functions already created
 
 case calc_choice
 when "add"
@@ -67,11 +86,11 @@ when "add"
 
 when "subtract"
   x, y = two_inputs
-  puts add(x,y)
+  puts subtract(x,y)
 
 when "multiply"
   x, y = two_inputs
-  puts add(x,y)
+  puts multiply(x,y)
 
 when "divide"
   x, y = two_inputs
@@ -79,37 +98,21 @@ when "divide"
 
 when "calc area"
   x, y = two_inputs
-  puts add(x,y)
+  puts calc_area(x,y)
 
 when "calc volume"
   x, y, z = three_inputs
-  puts add(x,y,z)
-
-  puts calc_volume(length,width,height)
+  puts calc_volume(x,y,z)
 
 when "calc fuel cost"
-  p "Enter driving distance in miles"
-  driving_distance = gets.chomp.to_f
-  p "Enter miles per gallon"
-  miles_gallon = gets.chomp.to_f
-  p "Enter cost of a gallon of gas"
-  cost_gas = gets.chomp.to_f
-
-  puts "Your trip will cost: $#{calc_fuel_cost(driving_distance,miles_gallon,cost_gas)}"
+  x, y, z = fuel_cost
+  puts calc_fuel_cost(x,y,z)
 
 when "calc annual simple interest"
-  p "enter current balance"
-  current_balance = gets.chomp.to_f
-  p "enter annual interest rate"
-  annual_interest_rate = gets.chomp.to_f
-
-  puts calc_annual_simple_interest(current_balance,annual_interest_rate/100)
-
+  x, y = two_inputs
+  puts calc_annual_simple_interest(x,y)
 
 else
   p "Please choose one of the stated choices"
 
 end
-
-
-
